@@ -39,3 +39,20 @@ class Solution:
             temp[s[r]]=r
             r+=1
         return max_len
+
+
+        OR
+
+
+class Solution:
+    def lengthOfLongestSubstring(self, s: str) -> int:
+        l=0
+        m=0
+        w=set()
+        for r in range(len(s)):
+            while s[r] in w:
+                w.remove(s[l])
+                l+=1
+            w.add(s[r])
+            m=max(m,r-l+1)
+        return m
